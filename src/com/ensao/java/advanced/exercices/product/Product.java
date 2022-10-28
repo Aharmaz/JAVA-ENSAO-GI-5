@@ -4,7 +4,18 @@ public class Product extends AbstractProduct {
 	
 	@Override
 	public Product clone() throws CloneNotSupportedException {
-		throw new ToBeCompletedException("Clone a product");
+
+		Product product = new Product();
+		product.setId(this.getId());
+		product.setCategory(this.getCategory());
+
+		return product;
+
+
+	}
+
+	public Product() {
+
 	}
 	
 	

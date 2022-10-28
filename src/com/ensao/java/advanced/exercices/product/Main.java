@@ -1,7 +1,7 @@
 package com.ensao.java.advanced.exercices.product;
 
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 	public static void main(String[] args) {
@@ -12,15 +12,17 @@ public class Main {
 		computer.setCategory("IT");
 		
 		Stock stock = new Stock();
+		var result = stock.sorted();
 		stock.add(computer);
-		Map<String, Product> groupedByCategory = stock.groupByCategory();
+		Map<String, List<Product>> groupedByCategory = stock.groupByCategory();
 		Collection<String> productsNamesOnly = stock.map(product -> product.getName());
-		Object foundProduct = stock.findProduct("Computer");
+		Object foundProduct = stock.findProduct("Computers").orElse(new Product());
 		Discount discount = null; // to complete
-		stock.discount(discount);
+
+		//stock.discount(discount);
 		Stock expensiveThanComputer = stock.moreExpensiveThan(computer);
 		
-		Stock filtered = stock.filter(null); // to complete
+		Stock filtered = stock.filter(p -> p.getPrice() > 100); // to complete
 		
 		
 	}
